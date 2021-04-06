@@ -1,0 +1,19 @@
+name: 'Ipynb2PDF'
+description: 'Convert jupyter notebook to pdf'
+inputs:
+  ipynb-path:
+    description: 'Path to source ipynb file'
+    required: true
+  pdf-name:
+    description: 'Name of target pdf file'
+    required: true
+  template-path:
+    description: 'Path to nbconvert template file'
+    required: false
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.ipynb-path }}
+    - ${{ inputs.pdf-name }}
+    - ${{ inputs.template-path }}
